@@ -1,0 +1,70 @@
+*{
+    font-family: 'Inconsolata', monospace;
+}
+body{
+    background-image: linear-gradient(45deg, rgb(106, 0, 255), #05d2fb);
+    height: 100vh;
+}
+
+.login{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 70px 100px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10% 20% 10% 20%;
+}
+
+.login i{
+    color: #05d2fb;
+    font-size: 25px;
+    margin-bottom: 10px;
+    
+
+}
+
+.login input{
+    border: none;
+    padding: 8px ;
+    outline: none;
+    margin: 10px;
+    border-radius: 10% 20% 10% 20%;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.btn{
+    background-color: #05d2fb;
+    border: none;
+    width: 100px;
+    margin-top: 15px;
+    border-radius: 10% 20% 10% 20%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: rgb(106, 0, 255);
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.email, 
+.senha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
