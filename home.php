@@ -10,33 +10,22 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styleHome.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;700;900&display=swap"
         rel="stylesheet">
-    <title>Projeto Formulário</title>
+    <title>Projeto | Formulário</title>
 </head>
 
 <body>
-    <div class="login">
-        <h1>Login</h1>
-        <form action="login.php" method="post" class="form">
-            <div class="email">
-                <label for="email">
-                    <i class="bi bi-person-fill"></i>
-                </label>
-                <input type="text" name="email" placeholder="E-mail" id="email" required>
-            </div>
-            <div class="senha">
-                <label for="senha">
-                    <i class="bi bi-key-fill"></i>
-                </label>
-                <input type="password" name="senha" placeholder="Senha" id="senha" required>
-            </div>
-            <div class="submit">
-                <input type="submit" value="Login" class="btn">
-            </div>
+    <div class="title">
+        <h1>Seja bem vindo</h1>
+        <h2>ao meu Projeto Formulário</h2>
+    </div>
+    <div class="box">
+        <a href="login.php">Login</a>
+        <a href="formulario.php">Cadastre-se</a>
     </div>
 </body>
 

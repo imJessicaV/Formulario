@@ -1,0 +1,57 @@
+*{
+    font-family: 'Inconsolata', monospace;
+}
+body{
+    background-image: linear-gradient(45deg, rgb(106, 0, 255), #05d2fb);
+    height: 96vh;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.title{
+    font-size: 50px;
+    margin-top: 30px;
+}
+
+.title h1{
+    font-weight: bolder;
+}
+
+.box{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 60px 90px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.3);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10% 20% 10% 20%;
+}
+
+.box a{
+    text-decoration: none;
+    color: black;
+    background-color: #05d2fb;
+    padding: 10px;
+    border-radius: 10% 20% 10% 20%;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+    border: none  ;
+    width: 170px;
+
+}
+
+.box a:hover{
+    background-color: rgb(106, 0, 255);
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 170px;
+    color: whitesmoke;
+}

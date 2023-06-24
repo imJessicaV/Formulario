@@ -28,8 +28,9 @@ if (isset($_POST['submit']))
   $cidade = $_POST['cidade'];
   $estado = $_POST['estado'];
   $endereco = $_POST['endereco'];
+  $senha = $_POST['senha'];
 
-  $result = mysqli_query($conn, "INSERT INTO usuarios (nome, email, telefone, sexo, data_nasc, cidade, estado, endereco) VALUES ('$nome', '$email', '$telefone', '$genero', '$data_nasc', '$cidade', '$estado', '$endereco')");
+  $result = mysqli_query($conn, "INSERT INTO usuarios (nome, email, telefone, sexo, data_nasc, cidade, estado, endereco, senha) VALUES ('$nome', '$email', '$telefone', '$genero', '$data_nasc', '$cidade', '$estado', '$endereco', '$senha')");
   echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='formulario.php';</script>";
 
   
@@ -53,6 +54,9 @@ if (isset($_POST['submit']))
 </head>
 
 <body>
+  
+    <a href="home.php">Voltar</a>
+  
   <div class="box">
     <form action="formulario.php" method="post">
       <fieldset>
@@ -61,6 +65,11 @@ if (isset($_POST['submit']))
         <div class="inputBox">
           <input type="text" name="nome" id="nome" required class="inputUser" />
           <label for="nome" class="labelInput">Nome Completo</label>
+        </div>
+        <br>
+        <div class="inputBox">
+          <input type="password" name="senha" id="senha" required class="inputUser" />
+          <label for="senha" class="labelInput">Senha</label>
         </div>
         <br />
         <div class="inputBox">
@@ -89,6 +98,8 @@ if (isset($_POST['submit']))
         <label for="data_nasc"><b>Data de Nascimento</b></label>
         <input type="date" name="data_nasc" id="data_nasc" required />
         <br />
+        <br>
+        <br>
         <div class="inputBox">
           <input type="text" name="cidade" id="cidade" required class="inputUser" />
           <label for="cidade" class="labelInput">Cidade</label>
