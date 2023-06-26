@@ -33,6 +33,7 @@ if (isset($_POST['submit']))
   $result = mysqli_query($conn, "INSERT INTO usuarios (nome, email, telefone, sexo, data_nasc, cidade, estado, endereco, senha) VALUES ('$nome', '$email', '$telefone', '$genero', '$data_nasc', '$cidade', '$estado', '$endereco', '$senha')");
   echo "<script>alert('Cadastro realizado com sucesso!');window.location.href='formulario.php';</script>";
 
+  header("Location: login.php");
   
 
 }

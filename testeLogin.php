@@ -1,4 +1,6 @@
 <?php
+
+session_start(); //inicia a sessão
   
   //print_r($_REQUEST);
 
@@ -14,8 +16,14 @@
     $result = $conn->query($sql); //executa a query
 
     if(mysqli_num_rows($result) < 1){
+
+        unset($_SESSION['email']); 
+        unset($_SESSION['senha']);
         header('Location: login.php');
     }else{
+
+        $_SESSION['email'] = $email;
+        $_SESSION['senha'] = $senha;
         header('Location: sistema.php');
     }
 
