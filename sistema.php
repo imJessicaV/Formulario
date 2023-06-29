@@ -1,19 +1,27 @@
 <?php
 session_start();
 include_once('config.php');
-if (!isset($_SESSION['email']) == true && !isset($_SESSION['senha']) == true) {
-  unset($_SESSION['email']);
-  unset($_SESSION['senha']);
-  header('Location: login.php');
+if (!isset($_SESSION['email']) == true && !isset($_SESSION['senha']) == true) { // isset verifica se a variável existe
+  unset($_SESSION['email']); // unset destroi a variável especificada
+  unset($_SESSION['senha']); // unset destroi a variável especificada
+  header('Location: login.php'); // redireciona para a página especificada
 }
 
-$logado = $_SESSION['email'];
+$logado = $_SESSION['email']; // atribui o valor da variável especificada a outra variável
 
-$sql = "SELECT * FROM usuarios ORDER BY id DESC ";
+if(!empty($_GET['search'])){
+  $data = $_GET['search'];
+  $sql = "SELECT * FROM usuarios WHERE id LIKE '%$data%' OR senha LIKE '%$data%' OR nome LIKE '%$data%' OR email LIKE '%$data%' OR telefone LIKE '%$data%' OR sexo LIKE '%$data%' OR data_nasc LIKE '%$data%' OR cidade LIKE '%$data%' OR estado LIKE '%$data%' OR endereco LIKE '%$data%' ORDER BY id DESC ";
+  // seleciona todos os dados da tabela usuarios e ordena pelo id de forma decrescente
 
-$result = $conn->query($sql);
+}else{
+  $sql = "SELECT * FROM usuarios ORDER BY id DESC "; // seleciona todos os dados da tabela usuarios e ordena pelo id de forma decrescente
+}
 
-//print_r($result);
+ 
+
+$result = $conn->query($sql); // executa a query especificada
+
 
 
 ?>
@@ -25,6 +33,7 @@ $result = $conn->query($sql);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -35,6 +44,14 @@ $result = $conn->query($sql);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    .box-search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4%;
+    }
+  </style>
   <title>Projeto Formulário</title>
 </head>
 
@@ -50,6 +67,17 @@ $result = $conn->query($sql);
   <?php
   echo "<h1 class='text-center mt-5'>$logado, bem vindo a sua sessão!</h1>";
   ?>
+  <br>
+  <div class="box-search">
+    <input type="search" name="search" id="pesquisar" class="form-control w-25" placeholder="Pesquisar">
+    <button class="btn btn-primary" onClick="searchData()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+        viewBox="0 0 16 16">
+        <path
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+      </svg>
+    </button>
+  </div>
 
   <div class="m-5">
     <table class="table">
@@ -92,13 +120,24 @@ $result = $conn->query($sql);
           </svg></a>
             </td>";
           echo "</tr>";
-        } {
-
-        }
+        } 
         ?>
       </tbody>
     </table>
   </div>
 </body>
+<script>
+    var search = document.getElementById('pesquisar'); //pega o elemento pelo id
+    
+    search.addEventListener('keydown', function(event){ //adiciona um evento de click no botão
+      if(event.key === "Enter") //verifica se a tecla apertada é o enter
+      {
+        searchData(); //chama a função de pesquisa
+      }
+    });
 
+    function searchData(){ //função de pesquisa
+      window.location.href = 'sistema.php?search=' + search.value; //redireciona para a página de pesquisa com o valor do input
+    }
+</script>
 </html>
